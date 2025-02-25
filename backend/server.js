@@ -1,43 +1,40 @@
+const express = require("express");
+const cors = require("cors");
 const app = require("./app");
-const connectDatabase = require("./db/database")
+const connectDatabase = require("./db/database");
+const userRoutes=require("./controller/userRouter");
 
-
-// Handling uncaught Exception
-
+// Handling uncaught Exception (e.g., using an undefined variable)
 process.on("uncaughtException", (err) => {
-    console.log(`Error: ${err.message}`);
-    console.log(`shuttind down the server for handling uncaught expectation`)
-})
+    console.error(`Error: ${err.message}`);
+    console.log("Shutting down due to an uncaught exception...");
+    process.exit(1); // Exit process with failure
+});
 
-
-
-// Config
-if (process.env.NODE_ENV !== 'PRODUCTION') {
-    require("dotenv").config({
-        path: 'backend/config/.env'
-    })
+// Load environment variables (only in development mode)
+if (process.env.NODE_ENV !== "PRODUCTION") {
+    require("dotenv").config({ path: "config/.env" });
 }
 
-
-//connect db
+// Connect to MongoDB database
 connectDatabase();
+const allowedOrigins = ["http://localhost:5173", "http://localhost:3000"];
 
-// create serve
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+}));
+app.use("/user",userRoutes);
 
-const PORT = process.env.PORT || 5000;
-
-const server = app.listen(process.env.PORT, () => {
-    console.log(`server is running on http://localhost:${PORT}`)
-})
-
-
-// unhandle promise rejection
-process.on("unhandledRejection", (err) => {
-    console.log(`shutting down the server for ${err.message}`)
-    console.log(`stutting dowm the server for unhandling promise rejection`)
-
-
-    server.close(() => {
-        process.exit(1);
-    })
-})
+// Start server
+const PORT = process.env.PORT || 8000;
+const server = app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+});

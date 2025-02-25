@@ -1,30 +1,33 @@
 const express = require('express');
 const ErrorHandler = require("./middleware/error");
-const app = express();
-const cookieParser = require("cookie-parser")
-const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const dotenv = require("dotenv");
+const cors=require("cors");
+// const user=require(".//controller/userRouter");
 
+const app = express();
+
+// Config
+if (process.env.NODE_ENV !== 'PRODUCTION') {
+    dotenv.config({ path: "backend/config/.env" });
+}
 
 app.use(express.json());
 app.use(cookieParser());
-app.use("/",express.static("uploads"));
+app.use("/", express.static("uploads"));
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 
-// Config
-if (process.env.NODE_ENV !== "PRODUCTION") {
-    require("dotenv").config({
-      path: "backend/config/.env",
-    });
-};
+app.use(cors({
+    origin:"http://localhost:5173",
+    credentials:true,
+}))
 
-//import Routes
-const user = require("./controller/user");
- 
+// Import Routes
+const user = require("./controller/userRouter");
 app.use("/user", user);
 
-
-
-// It's for ErrorHandling
+// Error Handling Middleware
 app.use(ErrorHandler);
 
 module.exports = app;
