@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../model/userModel');
+const User = require('../models/userModel');
 require('dotenv').config();
 
 // Signup Route
