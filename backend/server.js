@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 
-const allowedOrigins = ["http://localhost:5174", "http://localhost:3000"];
+const allowedOrigins = ["http://localhost:5173", "http://localhost:3000"];
 app.use(cors({
     origin: function (origin, callback) {
         if (!origin || allowedOrigins.includes(origin)) {
@@ -44,8 +44,8 @@ app.use(cors({
 app.use("/uploads", express.static("uploads"));
 
 // Import and use routes
-const userRoutes = require("./controller/userRouter");
-const productRoutes = require("./controller/productRouter");
+const userRoutes = require("./User/userRouter");
+const productRoutes = require("./Products/productRouter");
 
 app.use("/user", userRoutes);
 app.use("/products", productRoutes);
