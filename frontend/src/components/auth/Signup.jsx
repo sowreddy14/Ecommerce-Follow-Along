@@ -23,7 +23,7 @@ const Signup = () => {
       if (response.status === 201) {
         console.log("Signup successful");
         alert("Signup successful!");
-        navigate("/"); // Redirect to login page after signup
+        navigate("/login"); // Redirect to login page after signup
       }
     } catch (err) {
       console.error("Signup error:", err);

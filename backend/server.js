@@ -10,7 +10,7 @@ const path = require("path");
 const uploadPath = path.join(__dirname, "uploads");
 if (!fs.existsSync(uploadPath)) {
     fs.mkdirSync(uploadPath, { recursive: true });
-    console.log("✅ Created 'uploads/' directory");
+    console.log(" Created 'uploads/' directory");
 }
 
 // Handling uncaught Exception (e.g., using an undefined variable)
@@ -25,7 +25,7 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
     require("dotenv").config({ path: "config/.env" });
 }
 
-// ✅ Connect to MongoDB database
+//  Connect to MongoDB database
 connectDatabase();
 const allowedOrigins = ["http://localhost:5173", "http://localhost:3000"];
 
@@ -42,8 +42,8 @@ app.use(cors({
 }));
 app.use("/user", userRoutes);
 
-// ✅ Start server
+//  Start server
 const PORT = process.env.PORT || 8000;
 const server = app.listen(PORT, () => {
-    console.log(`✅ Server running on http://localhost:${PORT}`);
+    console.log(` Server running on http://localhost:${PORT}`);
 });

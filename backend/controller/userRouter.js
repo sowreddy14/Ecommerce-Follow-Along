@@ -1,10 +1,8 @@
-
-// module.exports = router;
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../models/userModel');
+const User = require('../model/userModel');
 require('dotenv').config();
 
 // Signup Route
