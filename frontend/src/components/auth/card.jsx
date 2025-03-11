@@ -19,7 +19,7 @@ const Card = ({ name, price, image, onAddToCart, onBuyNow, onEdit, onDelete }) =
         <p className="text-lg text-green-600 font-bold mt-1">${price}</p>
 
         {/* Action Buttons */}
-        <div className="flex justify-center items-center gap-4 mt-4 pb-4">
+        <div className="flex justify-center items-center gap-10 mt-4 pb-4">
           {/* Add to Cart */}
           <button onClick={onAddToCart} className="flex items-center justify-center">
             <img

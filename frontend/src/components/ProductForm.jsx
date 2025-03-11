@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 const ProductForm = () => {
     const navigate = useNavigate();
@@ -62,6 +63,7 @@ const ProductForm = () => {
     
     return (
         <div className="flex items-center justify-center h-screen w-screen">
+            <Navbar hideButtons={true} />
             <div className="p-6 max-w-lg mx-auto bg-gray-200 shadow-xl rounded-lg">
                 <h2 className="text-3xl font-extrabold text-gray-800 mb-6 text-center">Add New Product</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
