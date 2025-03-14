@@ -83,7 +83,7 @@ function Navbar({ hideButtons = false }) {
                     width="40"
                     height="40"
                     className="invert cursor-pointer"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVuu59xXHRetzjRc1t3AirQ5wMadWuIL8R1w&ss://th.bing.com/th/id/OIP.YXt6de_W1fOjYC1mBk3qogHaEf?w=285&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src="https://img.icons8.com/material-rounded/48/shopping-basket-add.png"
                     alt="shopping-basket-add"
                   />
                 </button>
@@ -93,13 +93,13 @@ function Navbar({ hideButtons = false }) {
             <>
               <button
                 onClick={() => navigate('/signup')}
-                className="bg-blue-600 text-2xl font-semibold px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+                className="bg-blue-600  font-semibold px-4 py-2 rounded-lg hover:bg-blue-700 transition"
               >
                 Signup
               </button>
               <button
                 onClick={() => navigate('/login')}
-                className="bg-green-600 text-2xl font-semibold px-4 py-2 rounded-lg hover:bg-green-700 transition"
+                className="bg-green-600 font-semibold px-4 py-2 rounded-lg hover:bg-green-700 transition"
               >
                 Login
               </button>
