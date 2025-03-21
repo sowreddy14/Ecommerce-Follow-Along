@@ -230,3 +230,30 @@ Displays a fallback message "No address found" if no addresses are available.
 Dynamic Design:
 
 The profile page is designed with responsiveness and usability in mind.
+
+## Milestone 21: Form to add user Address
+Project Overview
+This project implements an address form page where users can input and submit their address details. It includes the following fields:
+
+Country
+City
+Address Line 1
+Address Line 2
+Zip Code
+Address Type (Home/Office/Other)
+Features
+Address form with state to store user inputs.
+Navigation to the address form page when "Add Address" is clicked in the profile section.
+Data logging upon form submission (console output for demonstration).
+
+## Milestone 22: Creating Backend Endpoint to Store Address
+Project Overview
+This project focuses on creating a backend endpoint to receive address data from a frontend form and save it in the user's address array inside the database. It helps you understand how to design and implement such endpoints.
+
+Learning Goals ✨
+Create a backend API endpoint.
+Understand how to receive data from a frontend form.
+Modify and save data within a database collection.
+Features
+Address Submission: Accepts address details submitted via the frontend form.
+Data Storage: Adds the submitted address to the addresses array in the user's collection in the database.
