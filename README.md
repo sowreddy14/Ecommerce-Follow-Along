@@ -257,3 +257,48 @@ Modify and save data within a database collection.
 Features
 Address Submission: Accepts address details submitted via the frontend form.
 Data Storage: Adds the submitted address to the addresses array in the user's collection in the database.
+
+## Milestone 23: Select Address Page + Order Schema
+Frontend:
+Added "Place Order" button inside the Cart Page
+On click, it navigates to the Select Address Page
+The Select Address Page:
+Fetches and displays all saved user addresses
+Allows selection of a delivery address
+Backend:
+Created an API endpoint: GET /api/addresses/:email
+Fetches all saved addresses for the given user email
+Database:
+Created a new Order Schema using Mongoose to store:
+User ID
+Products
+Delivery Address
+Order status
+
+## Milestone 24: Order Confirmation Page
+Displays the selected delivery address
+Lists all cart products with quantity and total price
+Shows "Confirm Order" button
+This page summarizes everything before placing the order
+
+## Milestone 25: Backend - Place Order Endpoint
+Endpoint: POST /api/orders/place
+Accepts:
+User email
+Selected address
+Cart products
+Retrieves user ID from the database
+Creates one order per product (same address for all)
+Saves each order to the orders collection
+
+## Milestone 26: Backend - Get User Orders
+Endpoint: POST /api/orders/my-orders
+Accepts user email in the body
+Finds the corresponding user ID
+Returns all orders made by that user from the database
+
+## Milestone 27: My Orders Page (Frontend)
+New route: /my-orders
+Sends GET request to my-orders endpoint with user email
+Displays all orders in a card/grid format
+Added "My Orders" link to the Navbar
